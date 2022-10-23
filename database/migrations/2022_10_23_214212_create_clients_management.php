@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('clients_management', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
