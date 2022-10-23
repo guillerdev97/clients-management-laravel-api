@@ -12,16 +12,15 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('age');
+            $table->string('city');
+            $table->string('goal');
+            $table->string('medical history');
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('clients_management');
