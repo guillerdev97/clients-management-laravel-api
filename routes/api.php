@@ -13,6 +13,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/clients/list', [ClientController::class, 'list'])->name('listTasks');
+Route::post('/clients/create', [ClientController::class, 'create'])->name('createTask');
 
 
 Route::get('/clients/test', function() {
