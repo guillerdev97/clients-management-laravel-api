@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('age');
             $table->string('city');
             $table->string('goal');
-            $table->string('medical history');
+            $table->string('medical_history');
 
             $table->timestamps();
         });

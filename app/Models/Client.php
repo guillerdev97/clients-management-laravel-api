@@ -14,6 +14,6 @@ class Client extends Model
         'age',
         'city',
         'goal',
-        'medical history'
+        'medical_history'
     ];
 }

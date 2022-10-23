@@ -13,7 +13,7 @@ class ClientFactory extends Factory
             'age' => 'Client age',
             'city' => 'Client city',
             'goal' => 'Client goal',
-            'medical history' => 'url'
+            'medical_history' => 'url'
         ];
     }
 }

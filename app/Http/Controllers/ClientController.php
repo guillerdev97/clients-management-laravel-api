@@ -16,4 +16,20 @@ class ClientController extends Controller
             'data' => $clients
         ], 200);
     }
+
+    public function create(Request $request) {
+        $client = Client::create([
+            'name' => $request->name,
+            'age' => $request->age,
+            'city' => $request->city,
+            'goal' => $request->goal,
+            'medical_history' => $request->medical_history
+        ]);
+
+        return response()->json([
+            'status' => 1,
+            'msg' => 'Client created',
+            'data' => $client
+        ], 200);
+    }
 }
