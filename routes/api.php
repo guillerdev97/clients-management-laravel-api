@@ -7,6 +7,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+
 Route::get('/clients/list', function() {
     return 'hello world';
 });
