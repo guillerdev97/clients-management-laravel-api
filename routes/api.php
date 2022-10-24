@@ -15,7 +15,7 @@ Route::post('/clients/create', [ClientController::class, 'create'])->name('creat
 
 // AuthController
 Route::post('/clients/register', [AuthController::class, 'register'])->name('register');
-
+Route::post('/clients/login', [AuthController::class, 'login'])->name('login');
 // fallback route
 Route::any('{url?}/{sub_url?}', function() {
     return '404 page not found';
