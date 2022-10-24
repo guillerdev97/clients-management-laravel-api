@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -51,43 +52,30 @@ class AuthController extends Controller
         }
     }
 
-    public function login(Request $request) {
-        $validations = [
-            'email' => 'required|email',
-            'password' => 'required'
-        ];
-
-        $validator = Validator::make(
-            $request->all(),
-            $validations
-        );
-
-        if($validator->fails()) {
-            $errors = $validator->errors();
-
-            throw new Exception(
-                $errors,
-                400
-            );
-        }
-
-        $user = User::where('email', '=', $request->email)->first();
-
-        if(isset($user->id) === true) {
-            if(Hash::check($request->password, $user->password)) {
-                $token = $user->createToken('auth_token')->plainTextToken;
-
-                return response()->json([
-                    'status' => 1,
-                    'msg' => 'User is logged in',
-                    'data' => $user,
-                    'access_token' => $token
-                ], 200);
+    public function login(LoginRequest $request) {
+        try {
+            $request->checkValidation($request);
+    
+            $user = User::where('email', '=', $request->email)->first();
+    
+            if(isset($user->id) === true) {
+                if(Hash::check($request->password, $user->password)) {
+                    $token = $user->createToken('auth_token')->plainTextToken;
+    
+                    return response()->json([
+                        'status' => 1,
+                        'msg' => 'User is logged in',
+                        'data' => $user,
+                        'access_token' => $token
+                    ], 200);
+                }
             }
+        } catch(Exception $e){
+            return response()->json([
+                'status' => 0,
+                'msg' => $e->getMessage(),
+            ], $e->getCode());
         }
-
-        return response()->json([
-            'status' => 0
-        ]);
+       
     }
 }
