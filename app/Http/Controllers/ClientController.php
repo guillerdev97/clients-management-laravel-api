@@ -20,6 +20,7 @@ class ClientController extends Controller
     public function create(Request $request) {
         $client = Client::create([
             'name' => $request->name,
+            'lastname' => $request->lastname,
             'age' => $request->age,
             'city' => $request->city,
             'goal' => $request->goal,

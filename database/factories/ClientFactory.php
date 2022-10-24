@@ -10,7 +10,8 @@ class ClientFactory extends Factory
     {
         return [
             'name' => 'Client name',
-            'age' => 'Client age',
+            'lastname' => $this->faker->firstName(),
+            'age' => 18,
             'city' => 'Client city',
             'goal' => 'Client goal',
             'medical_history' => 'url'

@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('age');
+            $table->string('lastname')->unique('clients');
+            $table->integer('age');
             $table->string('city');
             $table->string('goal');
             $table->string('medical_history');
